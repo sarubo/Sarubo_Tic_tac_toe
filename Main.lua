@@ -29,13 +29,14 @@ local function main()
 		local board = Board.new(is_player_turn)
 		---win = 1, lose = 2, neither = 0
 		local status = 0
+		board:print()
 		for i = 1, 9 do
 			if is_player_turn then
-				print("Player play")
+				print('\nPlayer play: "'..board.pl..'"')
 				board:setVal(is_player_turn)
 				board:print()
 			else
-				print("Computer play")
+				print('\nComputer play: "'..board.com..'"')
 				board:setVal(is_player_turn)
 				board:print()
 			end
@@ -49,11 +50,15 @@ local function main()
 				is_player_turn = true
 			end
 		end
-		print(
-			(status == win) and "player win"
-			or (status == lose) and "player lose"
-			or "draw"
-		)
+		local judgment
+		if status == win then
+			judgment = "Player win!!!"
+		elseif status == lose then
+			judgment = "Player lose."
+		else
+			judgment = "Draw."
+		end
+		print("\n"..judgment.."\n")
 	end
 end
 
