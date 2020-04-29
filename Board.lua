@@ -86,20 +86,16 @@ local function playComputer(self)
 		end
 	end
 
-	if blanks[1][1] and players[3][3] then
-		body[1][1] = com
-
-	elseif blanks[1][3] and players[3][1] then
-		body[1][3] = com
-
-	elseif blanks[3][1] and players[1][3] then
-		body[3][1] = com
-
-	elseif blanks[3][3] and players[1][1] then
-		body[3][3] = com
-
-	elseif blanks[2][2] then
+	if blanks[2][2] then
 		body[2][2] = com
+
+	elseif blanks[3][2]
+	and body[2][2] == com
+	and (
+		(body[1][1] == pl and body[3][3] == pl)
+		or (body[1][3] == pl and body[3][1] == pl)
+	) then
+		body[3][2] = com
 
 	elseif blanks[1][1] then
 		body[1][1] = com
